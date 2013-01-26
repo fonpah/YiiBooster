@@ -403,7 +403,7 @@ class Bootstrap extends CApplicationComponent
 	public function registerDateRangePlugin($selector, $options = array(), $callback = null)
 	{
 
-		$key = __CLASS__ . '.' . md5(self::PLUGIN_DATERANGEPICKER . $selector . serialize($options) . $callback);
+		$key = __CLASS__ . '.' . md5(self::PLUGIN_DATERANGEPICKER . $selector . serialize($options) . serialize($callback));
 
 		Yii::app()->clientScript->registerScript($key, '$("' . $selector . '").daterangepicker(' . CJavaScript::encode($options) . ($callback ? ', ' . CJavaScript::encode($callback) : '') . ');');
 
